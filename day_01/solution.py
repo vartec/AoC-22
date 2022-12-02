@@ -12,4 +12,5 @@ with open('./input.txt') as f:
             current_calories = 0
 heapq.heappushpop(max_calories, current_calories)
 
-print(sum(max_calories))
+print(f"part 1: {sorted(max_calories)[-1]}")
+print(f"part 2: {sum(max_calories)}")
