@@ -1,9 +1,12 @@
 import heapq
+import os
+
+PATH = os.path.dirname(os.path.abspath(__file__))
 
 max_calories = [0, 0, 0]
 current_calories = 0
 
-with open('./input.txt') as f:
+with open(os.path.join(PATH,'input.txt')) as f:
     for line in f:
         if line.strip():
             current_calories += int(line)
