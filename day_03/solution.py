@@ -23,7 +23,7 @@ print(f'part 1: {total}')
 
 total = 0
 with open(os.path.join(PATH,'input.txt')) as f:
-    while f:
+    while True:
         try:
             backpacks = [next(f).strip() for _ in range(3)]
             total += PRIORITY[find_dup_2(backpacks)]
