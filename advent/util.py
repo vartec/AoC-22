@@ -24,11 +24,8 @@ def get_input_lines(_test_str=None):
 
 def get_input_chunks_by_size(size=3, _test_str=None):
     with get_input_file(_test_str) as f:
-        while True:
-            try:
-                yield [next(f).strip() for _ in range(size)]
-            except StopIteration:
-                break
+        for chunk in zip(*[iter(f)] * size):
+            yield [l.strip() for l in chunk]
 
 def get_input_chunks_by_separator(separator='', _test_str=None):
     with get_input_file(_test_str) as f:
