@@ -13,7 +13,7 @@ def find_dup_2(backpacks: list[str]) -> str:
     dup = (set(backpacks[0]) & set(backpacks[1]) & set(backpacks[2])).pop()
     return dup
 
-part_1_total = sum(PRIORITY[find_dup_1(line.strip())] for line in get_input_lines())
+part_1_total = sum(PRIORITY[find_dup_1(backpack)] for backpack in get_input_lines())
 part_2_total = sum(PRIORITY[find_dup_2(backpacks)] for backpacks in get_input_chunks_by_size(3))
 
 print(f'part 1: {part_1_total}')
