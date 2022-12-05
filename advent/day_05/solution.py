@@ -4,6 +4,7 @@ from advent.util import * # noqa
 def parse_stacks(stack_lines: list[str]) -> dict[str: list[str]]:
     stacks = {i.strip():list() for i in stack_lines.pop().split()}
     for line in reversed(stack_lines):
+        # this assumes Py3.6+, where every dict is an OrderedDict preserving key order
         for (key, chunk) in zip(stacks.keys(), zip(*[iter(line)] * 4)):
             crate = chunk[1]
             if crate != ' ':
@@ -32,7 +33,7 @@ with get_input_file() as f:
         stacks_2[move_to].extend(stacks_2[move_from][-1*how_many:])
         del stacks_2[move_from][-1*how_many:]
 
-result_1 = ''.join(s.pop() for s in stacks_1.values())  # it's an ordered dict, so it's in the in right order
+result_1 = ''.join(s.pop() for s in stacks_1.values())
 result_2 = ''.join(s.pop() for s in stacks_2.values())
 
 print(f'part 1: {result_1}')
